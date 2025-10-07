@@ -1,3 +1,12 @@
+TODO
+
+- my checlists auf startseite/dashboard
+- Hauptmenu punkt für alle checklisten
+- transportimport/update K&N transports kann weg "inklusive allem"
+  - vlt kann transports komplett weg
+
+
+
 # (W)o (i)st mei(n)e Winke(k)atze?
 
 C3VOC inventory and transport planning interface.
