@@ -98,7 +98,7 @@ a href=new_item_path(case_id: @case.id) add new item
       h4 no location
     - else
       a name="#{Digest::MD5.hexdigest(l.name)}"
-      - if l.shelf_level == 0
+      - if l.shelf_level == 0 # FIXME: das ist die reihenfolge in dem hardcoded array
         h4 = l.name
       - else
         h5 = l.name

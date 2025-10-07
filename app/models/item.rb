@@ -12,7 +12,8 @@ class Item < ActiveRecord::Base
 
   scope :deleted, -> { where(deleted: true) }
   scope :not_deleted, -> { where(deleted: false) }
-  scope :device, -> { where(item_type: ItemType.find_by(name: "Device")) }
+  scope :device, -> { where(is_device: true) } # TODO
+  # TODO: anstatt NAme Device Hardcoden einen Schalter an den Item typ machen der ein Tiem Type als Device markiert
   #       deleted = false AND ( broken = true OR missing = true )")
   scope :flagged, -> { where(broken: true).or(where(missing: true)).not_deleted }
 

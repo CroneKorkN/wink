@@ -9,6 +9,15 @@ class CheckList < ActiveRecord::Base
   after_create :copy_items!
   after_create :send_mqtt_message!
 
+  # TODO:
+  # ggf struktur aus case übernehmen (anstatt alles zu kopieren) und nur item ids als missing oder broken oder checked speichern
+
+  # OBACHT
+  # solte mobile friendly sein
+  # man sollte nicht ewig scrollen müssen
+
+  # mehrere spalten nebeneinander?
+
   def locations
     self.check_list_items.map do |cli|
       cli if cli.item&.shelf?

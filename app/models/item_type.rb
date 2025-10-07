@@ -4,5 +4,5 @@ class ItemType < ActiveRecord::Base
   validates :name, uniqueness: true, presence: true
 
 
-  LOCATIONS = ["Fach", "Meshbag"]
+  LOCATIONS = ["Fach", "Meshbag"] # TODO hardcoded
 end

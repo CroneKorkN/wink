@@ -5,12 +5,18 @@ class Case < ActiveRecord::Base
   has_many :events,      through: :event_cases
   has_many :check_lists, through: :event_cases
   has_many :items
+  has_many :locations, class_name: 'Item', foreign_key: 'case_id' # TODO
 
   validates :name, presence: true, uniqueness: true
   validates :acronym, presence: true, uniqueness: true
   validates :case_type, presence: true
 
-  def locations
+  # Todo location
+  #
+
+  def locations # FIXME
+    # an item that may contain other items, like a container of some sort
+    # zum schalter machen
     Item.where("case_id = #{self.id} AND \
       deleted = false AND
       (item_type_id = #{ItemType.find_by(name: "Meshbag").id} or
@@ -18,6 +24,9 @@ class Case < ActiveRecord::Base
   end
 
   def sections
+    # auch zum schalter is_section machen, ein item kann eine section sein
+    # zum eigenen schalter machen, kann neben location existieren
+    # NEIN: sections abschaffen, stattdessen locations verschachteln
     Item.where("case_id = #{self.id} AND \
       deleted = false AND
       item_type_id = #{ItemType.find_by(name: "Fach").id}")

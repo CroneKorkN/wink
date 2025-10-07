@@ -106,7 +106,11 @@ ActiveRecord::Schema[8.0].define(version: 2025_10_04_065743) do
     t.string "description"
     t.string "manufacturer"
     t.string "model"
-    t.bigint "item_id"
+    t.bigint "item_id" # relates_to
+    # TODO: führt beim klonen/verschieben zu fehlern:
+    # klon beziehr sich auf urprüngliches item und relation wird nicht mit umgezogen
+    # wenn ich ein device Klone sollten die related items auch mit geklont werden und im neuen case landen
+    # - ein item das related items, dessen related items sollten immer mitgeklont werden
     t.bigint "case_id"
     t.date "date_of_purchase"
     t.decimal "price"
